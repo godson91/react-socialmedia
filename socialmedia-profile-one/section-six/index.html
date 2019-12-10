@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+          <!-- React Library -->
+<script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+<!-- React DOM Library -->
+<script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+<!-- BABEL Library  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"/>
+
+
+    <title>iterating lists</title>
+</head>
+<body>
+    <div id="app">React is messing up now fix it</div>
+
+    <script type="text/babel">
+
+        //FamilyList Stateless Component
+        function FamilyList(props) {
+            var siblings = props.siblings;
+
+            var siblingsListItem = siblings.map(function(person){
+                return <div key={person.id}>{person.name}</div> 
+            })
+            return (
+                <div>
+                    <div>{siblingsListItem}</div>
+                </div>
+            )
+        }
+
+        //Alternative FamilyList component
+        // function FamilyList(props) {
+        //     return(
+        //         <div>{props.siblings.map(function(person){
+        //             return <div key={person.id}>{person.name}</div>
+        //         })}</div>
+        //     );
+        // }
+
+        //array of objects
+        var siblings = [{
+            id:1,
+            name: 'Big Daddy',
+            female: false},
+            {
+                id: 2,
+                name: 'Mickayla',
+                female: false
+            },
+            {
+                id: 3,
+                name: 'Julie',
+                female: true
+            },
+            {
+                id: 4,
+                name: 'Jessica',
+                female: true
+            
+        }];
+        
+        ReactDOM.render(
+            <div>
+                <FamilyList
+                    siblings={siblings}
+                />
+            </div>,
+            document.getElementById("app")
+        );
+    </script>
+</body>
+</html>
