@@ -23,6 +23,10 @@
 
     //FRIENDLY COMPLEX COMPONENT
     function Friendly(props) {
+        var malePeopleItem = props.people.filter(function(person){
+            return person.gender === "male";
+        }).map(function(person){
+
         var friendlyStyle = {
             display: 'inline-block',
             margin: 20,
@@ -32,12 +36,43 @@
             backgroundColor: "blue",
             WebkitFilter: "drop-shadow(0px 0px 5px #555)",
             filter: "drop-shadow(0px 0px 5px #555)"
-        }
+        };
         return (
-            <div style={friendlyStyle}>
-                <Avatar img={props.img}/>
-                <UserName name={props.name}/>
+            <div key={person.id} style={friendlyStyle}>
+                <Avatar img={person.img}/>
+                <UserName name={person.name}/>
                 <GetConnected/>
+            </div>
+        
+        )});
+        var femalePeopleItem = props.people.filter(function(person){
+            return person.gender === "female";
+        }).map(function(person){
+
+        var friendlyStyle = {
+            display: 'inline-block',
+            margin: 20,
+            height: 300,
+            width: 200,
+            padding: 0,
+            backgroundColor: "blue",
+            WebkitFilter: "drop-shadow(0px 0px 5px #555)",
+            filter: "drop-shadow(0px 0px 5px #555)"
+        };
+        return (
+            <div  key={person.id} style={friendlyStyle}>
+                <Avatar img={person.img}/>
+                <UserName name={person.name}/>
+                <GetConnected/>
+            </div>
+        )});
+        return (
+            <div>
+                <h1>Kings</h1>
+                <div >{malePeopleItem} </div>
+                <hr/>
+                <h1>Queens</h1>
+                <div> {femalePeopleItem} </div>
             </div>
         );
     }
@@ -109,13 +144,13 @@
             }
 
         var people = [{
-            {name:"big daddy", img:"https://media.licdn.com/dms/image/C4E03AQFwKBt7Ym8b6A/profile-displayphoto-shrink_100_100/0?e=1581552000&v=beta&t=IkeIY61cQlaS103fYoRIvhFHi13SfoqT5oFDtp8G7U4"/>},
-            {name="Micheala",img:"https://media.licdn.com/dms/image/C4E03AQGmms1iy3zKCg/profile-displayphoto-shrink_200_200/0?e=1581552000&v=beta&t=FJ5V6x2mcDgao0nFbybrmIGPT3-SHL0HW4o4FqDLH00"/>},                      
-            {name:"Mellinda",img:"https://media.licdn.com/dms/image/C5103AQHtQmjdgdrlHw/profile-displayphoto-shrink_200_200/0?e=1581552000&v=beta&t=XiNkrYB27AgR3KhongjBO3CD0kduk0eusFpTFUgJq5Q"/>},
-            {name:"Richie",img:"https://media.licdn.com/dms/image/C4E03AQHHlFNm2T_AKw/profile-displayphoto-shrink_200_200/0?e=1581552000&v=beta&t=HIe1Gchy44HGijzx80HyLHOAmW5Uos227hMqsCXPHwo"/>},
-            {name:"Holly",img:"https://media.licdn.com/dms/image/C5603AQGVwksX1GHH2Q/profile-displayphoto-shrink_200_200/0?e=1581552000&v=beta&t=DyuMudL2Rg5l96Z8MK_vBwMEPZhqNzUU46h5FP1oKj8"/>},
-            {name:"Ben K.", img:"https://media.licdn.com/dms/image/C5603AQHGRJmFlZjRpQ/profile-displayphoto-shrink_200_200/0?e=1581552000&v=beta&t=zwahxu6dYgpwpfY6ESPCpEvbpK94Z3Tb4qEbOF2y2W0" />},
-            {name:"Jacolby",img:"https://media.licdn.com/dms/image/C4E03AQEFgVPrNn2e7A/profile-displayphoto-shrink_200_200/0?e=1581552000&v=beta&t=9W7h3JaqbY4WTSdLOpIfZnHqOV16o_DXQXx_fUBsQsA"/>
+            id: 0, gender: "male", name:"big daddy", img:"https://media.licdn.com/dms/image/C4E03AQFwKBt7Ym8b6A/profile-displayphoto-shrink_100_100/0?e=1581552000&v=beta&t=IkeIY61cQlaS103fYoRIvhFHi13SfoqT5oFDtp8G7U4"},
+            {id: 1, gender: "female", name:"Micheala",img:"https://media.licdn.com/dms/image/C4E03AQGmms1iy3zKCg/profile-displayphoto-shrink_200_200/0?e=1581552000&v=beta&t=FJ5V6x2mcDgao0nFbybrmIGPT3-SHL0HW4o4FqDLH00"},                      
+            {id: 2, gender: "female", name:"Mellinda",img:"https://media.licdn.com/dms/image/C5103AQHtQmjdgdrlHw/profile-displayphoto-shrink_200_200/0?e=1581552000&v=beta&t=XiNkrYB27AgR3KhongjBO3CD0kduk0eusFpTFUgJq5Q"},
+            {id: 3, gender: "male", name:"Richie",img:"https://media.licdn.com/dms/image/C4E03AQHHlFNm2T_AKw/profile-displayphoto-shrink_200_200/0?e=1581552000&v=beta&t=HIe1Gchy44HGijzx80HyLHOAmW5Uos227hMqsCXPHwo"},
+            {id: 4, gender: "female", name:"Holly",img:"https://media.licdn.com/dms/image/C5603AQGVwksX1GHH2Q/profile-displayphoto-shrink_200_200/0?e=1581552000&v=beta&t=DyuMudL2Rg5l96Z8MK_vBwMEPZhqNzUU46h5FP1oKj8"},
+            {id: 5, gender: "male", name:"Ben K.", img:"https://media.licdn.com/dms/image/C5603AQHGRJmFlZjRpQ/profile-displayphoto-shrink_200_200/0?e=1581552000&v=beta&t=zwahxu6dYgpwpfY6ESPCpEvbpK94Z3Tb4qEbOF2y2W0" },
+            {id: 6, gender: "male", name:"Jacolby",img:"https://media.licdn.com/dms/image/C4E03AQEFgVPrNn2e7A/profile-displayphoto-shrink_200_200/0?e=1581552000&v=beta&t=9W7h3JaqbY4WTSdLOpIfZnHqOV16o_DXQXx_fUBsQsA"
         }];    
         
         ReactDOM.render(
